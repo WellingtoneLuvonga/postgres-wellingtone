@@ -7,7 +7,7 @@ spec:
   postgresVersion: 15
   instances:
     - name: main
-      replicas: 1
+      replicas: 3
   backups:
     pgbackrest:
       repos:
