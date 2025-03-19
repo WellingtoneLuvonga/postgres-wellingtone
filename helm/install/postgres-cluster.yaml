@@ -1,0 +1,35 @@
+apiVersion: postgres-operator.crunchydata.com/v1beta1
+kind: PostgresCluster
+metadata:
+  name: my-postgres-cluster
+  namespace: postgres-operator
+spec:
+  postgresVersion: 15
+  instances:
+    - name: main
+      replicas: 1
+  backups:
+    pgbackrest:
+      repos:
+        - name: repo1
+          volume:
+            volumeClaimSpec:
+              accessModes: [ "ReadWriteOnce" ]
+              resources:
+                requests:
+                  storage: 5Gi
+  monitoring:
+    enablePodMonitor: true
+    exporter:
+      image: quay.io/prometheuscommunity/postgres-exporter:latest
+      resources:
+        requests:
+          memory: "64Mi"
+          cpu: "50m"
+  patroni:
+    dynamicConfiguration:
+      postgresql:
+        parameters:
+          max_connections: "300"
+          shared_buffers: "256MB"
+
