@@ -1,6 +1,7 @@
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
+  annotations: {}
   labels:
     app.kubernetes.io/name: pgo
     app.kubernetes.io/version: 5.7.4
@@ -205,7 +206,7 @@ spec:
                                       description: DownwardAPIVolumeFile represents information to create the file containing the pod field
                                       properties:
                                         fieldRef:
-                                          description: 'Required: Selects a field of the pod: only labels, name, namespace and uid are supported.'
+                                          description: 'Required: Selects a field of the pod: only annotations, labels, name, namespace and uid are supported.'
                                           properties:
                                             apiVersion:
                                               description: Version of the schema the FieldPath is written in terms of, defaults to "v1".
@@ -1370,7 +1371,10 @@ spec:
                         metadata:
                           description: Metadata contains metadata for custom resources
                           properties:
-                            annotations: {}
+                            annotations:
+                              additionalProperties:
+                                type: string
+                              type: object
                             labels:
                               additionalProperties:
                                 type: string
@@ -4255,7 +4259,7 @@ spec:
                                   description: DownwardAPIVolumeFile represents information to create the file containing the pod field
                                   properties:
                                     fieldRef:
-                                      description: 'Required: Selects a field of the pod: only labels, name, namespace and uid are supported.'
+                                      description: 'Required: Selects a field of the pod: only annotations, labels, name, namespace and uid are supported.'
                                       properties:
                                         apiVersion:
                                           description: Version of the schema the FieldPath is written in terms of, defaults to "v1".
@@ -5557,7 +5561,7 @@ spec:
                                       description: DownwardAPIVolumeFile represents information to create the file containing the pod field
                                       properties:
                                         fieldRef:
-                                          description: 'Required: Selects a field of the pod: only labels, name, namespace and uid are supported.'
+                                          description: 'Required: Selects a field of the pod: only annotations, labels, name, namespace and uid are supported.'
                                           properties:
                                             apiVersion:
                                               description: Version of the schema the FieldPath is written in terms of, defaults to "v1".
@@ -8193,7 +8197,7 @@ spec:
                                         x-kubernetes-map-type: atomic
                                       fieldRef:
                                         description: |-
-                                          Selects a field of the pod: supports metadata.name,
+                                          Selects a field of the pod: supports metadata.name, metadata.namespace, `metadata.labels['<KEY>']`, `metadata.annotations['<KEY>']`,
                                           spec.nodeName, spec.serviceAccountName, status.hostIP, status.podIP, status.podIPs.
                                         properties:
                                           apiVersion:
@@ -9661,7 +9665,10 @@ spec:
                       metadata:
                         description: Metadata contains metadata for custom resources
                         properties:
-                          annotations: {}
+                          annotations:
+                            additionalProperties:
+                              type: string
+                            type: object
                           labels:
                             additionalProperties:
                               type: string
@@ -10465,7 +10472,10 @@ spec:
                 metadata:
                   description: Metadata contains metadata for custom resources
                   properties:
-                    annotations: {}
+                    annotations:
+                      additionalProperties:
+                        type: string
+                      type: object
                     labels:
                       additionalProperties:
                         type: string
@@ -10640,7 +10650,7 @@ spec:
                                           description: DownwardAPIVolumeFile represents information to create the file containing the pod field
                                           properties:
                                             fieldRef:
-                                              description: 'Required: Selects a field of the pod: labels, name, namespace and uid are supported.'
+                                              description: 'Required: Selects a field of the pod: only annotations, labels, name, namespace and uid are supported.'
                                               properties:
                                                 apiVersion:
                                                   description: Version of the schema the FieldPath is written in terms of, defaults to "v1".
@@ -12051,7 +12061,7 @@ spec:
                                           description: DownwardAPIVolumeFile represents information to create the file containing the pod field
                                           properties:
                                             fieldRef:
-                                              description: 'Required: Selects a field of the pod: only labels, name, namespace and uid are supported.'
+                                              description: 'Required: Selects a field of the pod: only annotations, labels, name, namespace and uid are supported.'
                                               properties:
                                                 apiVersion:
                                                   description: Version of the schema the FieldPath is written in terms of, defaults to "v1".
@@ -12278,7 +12288,7 @@ spec:
                                           x-kubernetes-map-type: atomic
                                         fieldRef:
                                           description: |-
-                                            Selects a field of the pod: supports metadata.name, metadata.namespace,
+                                            Selects a field of the pod: supports metadata.name, metadata.namespace, `metadata.labels['<KEY>']`, `metadata.annotations['<KEY>']`,
                                             spec.nodeName, spec.serviceAccountName, status.hostIP, status.podIP, status.podIPs.
                                           properties:
                                             apiVersion:
@@ -13605,7 +13615,10 @@ spec:
                         metadata:
                           description: Metadata contains metadata for custom resources
                           properties:
-                            annotations: {}
+                            annotations:
+                              additionalProperties:
+                                type: string
+                              type: object
                             labels:
                               additionalProperties:
                                 type: string
@@ -13715,7 +13728,10 @@ spec:
                             metadata:
                               description: Metadata contains metadata for custom resources
                               properties:
-                                annotations: {}
+                                annotations:
+                                  additionalProperties:
+                                    type: string
+                                  type: object
                                 labels:
                                   additionalProperties:
                                     type: string
@@ -14045,7 +14061,10 @@ spec:
                     metadata:
                       description: Metadata contains metadata for custom resources
                       properties:
-                        annotations: {}
+                        annotations:
+                          additionalProperties:
+                            type: string
+                          type: object
                         labels:
                           additionalProperties:
                             type: string
@@ -14086,7 +14105,10 @@ spec:
                     metadata:
                       description: Metadata contains metadata for custom resources
                       properties:
-                        annotations: {}
+                        annotations:
+                          additionalProperties:
+                            type: string
+                          type: object
                         labels:
                           additionalProperties:
                             type: string
@@ -15204,7 +15226,7 @@ spec:
                                           description: DownwardAPIVolumeFile represents information to create the file containing the pod field
                                           properties:
                                             fieldRef:
-                                              description: 'Required: Selects a field of the pod: only  labels, name, namespace and uid are supported.'
+                                              description: 'Required: Selects a field of the pod: only annotations, labels, name, namespace and uid are supported.'
                                               properties:
                                                 apiVersion:
                                                   description: Version of the schema the FieldPath is written in terms of, defaults to "v1".
@@ -15569,7 +15591,10 @@ spec:
                         metadata:
                           description: Metadata contains metadata for custom resources
                           properties:
-                            annotations: {}
+                            annotations:
+                              additionalProperties:
+                                type: string
+                              type: object
                             labels:
                               additionalProperties:
                                 type: string
@@ -15664,7 +15689,10 @@ spec:
                             metadata:
                               description: Metadata contains metadata for custom resources
                               properties:
-                                annotations: {}
+                                annotations:
+                                  additionalProperties:
+                                    type: string
+                                  type: object
                                 labels:
                                   additionalProperties:
                                     type: string
