@@ -8,16 +8,6 @@ spec:
   instances:
     - name: main
       replicas: 3
-  backups:
-    pgbackrest:
-      repos:
-        - name: repo1
-          volume:
-            volumeClaimSpec:
-              accessModes: [ "ReadWriteOnce" ]
-              resources:
-                requests:
-                  storage: 5Gi
   monitoring:
     enablePodMonitor: true
     exporter:
