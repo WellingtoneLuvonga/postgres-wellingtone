@@ -6,7 +6,6 @@ metadata:
 spec:
   postgresVersion: 15
   instances:
-    - name: main
       replicas: 3
   monitoring:
     enablePodMonitor: true
